@@ -41,4 +41,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+connectDb().then(async () => {
+  app.listen(process.env.PORT, () =>
+    console.log(`Example app listening on port ${process.env.PORT}!`),
+  );
+});
+
 module.exports = app;
