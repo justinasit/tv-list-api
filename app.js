@@ -28,6 +28,12 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+//get jwt private key from .env
+if (!process.env.JWT_PRIVATE_KEY) {
+  console.error("FATAL ERROR: JWT_PRIVATE_KEY is not defined.");
+  process.exit(1);
+}
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
