@@ -22,6 +22,17 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 255
   },
+  shows: [{
+    id: Number,
+    seasons_watched: [Number],
+  }],
+  archivedShows: [{
+    name: String,
+    number_of_seasons: Number,
+    last_aired_season: Number,
+    showIdIndex: Number,
+    id: Number,
+  }]
 });
 
 

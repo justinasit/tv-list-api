@@ -11,17 +11,17 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET shows. */
-router.get('/stored-shows', async function(req, res, next) {
-  const shows = await mongoose.model('Show').find({});
+router.get('/stored-shows', auth, async function(req, res, next) {
+  const user = await mongoose.model('User').findById(req.user._id).select('shows');
 
-  return res.send(shows);
+  return res.send(user.shows);
 });
 
 /* GET archived shows. */
-router.get('/archived-shows', async function(req, res, next) {
-  const shows = await mongoose.model('ArchivedShow').find({});
+router.get('/archived-shows', auth, async function(req, res, next) {
+  const user = await mongoose.model('User').findById(req.user._id).select('archivedShows');
 
-  return res.send(shows);
+  return res.send(user.archivedShows);
 });
 
 /* Auth routes */
