@@ -16,7 +16,8 @@ const authController = {
         res.header("x-auth-token", token).send({
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            shows: user.shows,
         });
     },
     register: async function(req, res) {
@@ -31,7 +32,8 @@ const authController = {
         user = new mongoose.model('User')({
           name: req.body.name,
           password: req.body.password,
-          email: req.body.email
+          email: req.body.email,
+          shows: req.body.shows,
         });
         user.password = await bcrypt.hash(user.password, 10);
         await user.save();
@@ -57,6 +59,7 @@ function validateUser(user, nameRequired=false) {
 
     if (nameRequired) {
         schema.name = Joi.string().min(3).max(50).required();
+        schema.shows = Joi.array().required();
     }
   
     return Joi.validate(user, schema);
