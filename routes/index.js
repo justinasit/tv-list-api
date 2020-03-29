@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
 import authController from '../controllers/auth.controller';
+import showsController from '../controllers/shows.controller';
 
 var express = require('express');
 var router = express.Router();
@@ -10,19 +10,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET shows. */
-router.get('/stored-shows', auth, async function(req, res, next) {
-  const user = await mongoose.model('User').findById(req.user._id).select('shows');
-
-  return res.send(user.shows);
-});
-
-/* GET archived shows. */
-router.get('/archived-shows', auth, async function(req, res, next) {
-  const user = await mongoose.model('User').findById(req.user._id).select('archivedShows');
-
-  return res.send(user.archivedShows);
-});
+/* Shows routes */
+router.get('/stored-shows', auth, async (req, res) => showsController.index(req, res));
+router.get('/archived-shows', auth, async (req, res) => showsController.archived(req, res));
 
 /* Auth routes */
 router.get("/current", auth, async (req, res) => authController.current(req, res));
