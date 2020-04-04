@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
-    "test": "jest"
+    "start": "nodemon --exec babel-node server.js",
+    "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
