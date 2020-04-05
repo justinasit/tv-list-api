@@ -24,4 +24,19 @@ describe('Shows', () => {
 
     expect(res.statusCode).toEqual(200);
   });
+
+  it('should be able to store shows', async () => {
+    const res = await request(app)
+      .post('/stored-shows')
+      .send({
+        shows: [{'id': 1234, seasons_watched: [1]}],
+      })
+      .set({
+        'x-access-token': token,
+      });
+
+    expect(res.statusCode).toEqual(200);
+    expect(res.body.shows[0].id).toEqual(1234);
+    expect(res.body.shows[0].seasons_watched[0]).toEqual(1);
+  });
 });
