@@ -28,9 +28,7 @@ describe('Shows', () => {
   it('should be able to store shows', async () => {
     const res = await request(app)
       .post('/stored-shows')
-      .send({
-        shows: [{'id': 1234, seasons_watched: [1]}],
-      })
+      .send([{'id': 1234, seasons_watched: [1]}])
       .set({
         'x-access-token': token,
       });

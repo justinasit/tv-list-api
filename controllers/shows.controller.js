@@ -13,13 +13,11 @@ const showsController = {
         return res.send(user.archivedShows);
     },
     store: async function(req, res) {
-        const { error } = Joi.validate(req.body, {
-            shows: Joi.array().required()
-        });
+        const { error } = Joi.validate(req.body, Joi.array().required());
         if (error) return res.status(400).send(error.details[0].message);
 
         const user = await mongoose.model('User').findById(req.user._id).select('shows');
-        user.shows = req.body.shows;
+        user.shows = req.body;
         await user.save();
       
         return res.send(user);
