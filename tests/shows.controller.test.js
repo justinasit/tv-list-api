@@ -39,4 +39,17 @@ describe('Shows', () => {
     expect(res.body.shows[0].id).toEqual(1234);
     expect(res.body.shows[0].seasons_watched[0]).toEqual(1);
   });
+
+  it('shouldn\'t be able to store shows with invalid data', async () => {
+    const res = await request(app)
+      .post('/stored-shows')
+      .send({
+        shows: 'invalid data',
+      })
+      .set({
+        'x-access-token': token,
+      });
+
+    expect(res.statusCode).toEqual(400);
+  });
 });
