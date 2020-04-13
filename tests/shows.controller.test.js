@@ -50,4 +50,17 @@ describe('Shows', () => {
 
     expect(res.statusCode).toEqual(400);
   });
+
+  it('should be able to store archived shows', async () => {
+    const res = await request(app)
+      .post('/archived-shows')
+      .send([{'id': 1234, number_of_seasons: 4, name: 'Walking Dead'}])
+      .set({
+        'x-access-token': token,
+      });
+
+    expect(res.statusCode).toEqual(200);
+    expect(res.body.archivedShows[0].id).toEqual(1234);
+    expect(res.body.archivedShows[0].number_of_seasons).toEqual(4);
+  });
 });

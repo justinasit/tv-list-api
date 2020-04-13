@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/stored-shows', auth, async (req, res) => showsController.index(req, res));
 router.get('/archived-shows', auth, async (req, res) => showsController.archived(req, res));
 router.post('/stored-shows', auth, async (req, res) => showsController.store(req, res));
+router.post('/archived-shows', auth, async (req, res) => showsController.storeArchived(req, res));
 
 /* Auth routes */
 router.get("/current", auth, async (req, res) => authController.current(req, res));

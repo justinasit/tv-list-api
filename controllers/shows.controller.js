@@ -22,6 +22,16 @@ const showsController = {
         await user.save();
       
         return res.send(user);
+    },
+    storeArchived: async function(req, res) {
+        const { error } = Joi.validate(req.body, Joi.array().required());
+        if (error) return output.error(res, error.details[0].message);
+
+        const user = await mongoose.model('User').findById(req.user._id).select('archivedShows');
+        user.archivedShows = req.body;
+        await user.save();
+      
+        return res.send(user);
     }
 }
 
