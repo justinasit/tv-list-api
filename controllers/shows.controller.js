@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const Joi = require('joi');
+import output from '../helpers/output';
 
 const showsController = {
     index: async function(req, res) {
@@ -14,7 +15,7 @@ const showsController = {
     },
     store: async function(req, res) {
         const { error } = Joi.validate(req.body, Joi.array().required());
-        if (error) return res.status(400).send(error.details[0].message);
+        if (error) return output.error(res, error.details[0].message);
 
         const user = await mongoose.model('User').findById(req.user._id).select('shows');
         user.shows = req.body;

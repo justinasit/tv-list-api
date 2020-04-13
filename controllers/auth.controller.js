@@ -1,16 +1,17 @@
 import mongoose from 'mongoose';
 const Joi = require('joi');
 const bcrypt = require("bcrypt");
+import output from '../helpers/output';
 
 const authController = {
     login: async function(req, res) {
         // validate the request body first
         const { error } = validateUser(req.body);
-        if (error) return res.status(400).send(error.details[0].message);
+        if (error) return output.error(res, error.details[0].message);
 
         //find an existing user
         let user = await mongoose.model('User').findOne({ email: req.body.email });
-        if (!user) return res.status(400).send("User does not exist.");
+        if (!user) return output.error(res, "User does not exist.");
 
         const token = user.generateAuthToken();
         res.header("x-auth-token", token).send({
@@ -23,11 +24,11 @@ const authController = {
     register: async function(req, res) {
         // validate the request body first
         const { error } = validateUser(req.body, true);
-        if (error) return res.status(400).send(error.details[0].message);
+        if (error) return output.error(res, error.details[0].message);
       
         //find an existing user
         let user = await mongoose.model('User').findOne({ email: req.body.email });
-        if (user) return res.status(400).send("User already registered.");
+        if (user) return output.error(res, "User already registered.");
       
         user = new mongoose.model('User')({
           name: req.body.name,
