@@ -1,14 +1,14 @@
 import models, { connectDb } from './models';
 import 'dotenv/config';
 import cors from 'cors';
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import indexRouter from './routes/index';
+import serverless from 'serverless-http';
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
@@ -52,4 +52,5 @@ app.use(function(err, req, res, next) {
 
 connectDb();
 
+module.exports.handler = serverless(app);
 module.exports = app;

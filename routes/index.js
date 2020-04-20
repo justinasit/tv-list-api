@@ -1,9 +1,9 @@
 import authController from '../controllers/auth.controller';
 import showsController from '../controllers/shows.controller';
+import express from  'express';
+import auth from '../middleware/auth';
 
-var express = require('express');
 var router = express.Router();
-const auth = require("../middleware/auth");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

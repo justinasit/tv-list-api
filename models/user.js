@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
+import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 //simple schema
 const UserSchema = new mongoose.Schema({

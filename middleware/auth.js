@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import jwt from 'jsonwebtoken';
 
 module.exports = function(req, res, next) {
   //get the token from the header if present

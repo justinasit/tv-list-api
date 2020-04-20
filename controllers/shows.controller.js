@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const Joi = require('joi');
+import Joi from 'joi';
 import output from '../helpers/output';
 
 const showsController = {

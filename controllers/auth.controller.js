@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-const Joi = require('joi');
-const bcrypt = require("bcrypt");
+import Joi from 'joi';
+import bcrypt from 'bcrypt';
 import output from '../helpers/output';
 
 const authController = {
