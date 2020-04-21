@@ -52,5 +52,4 @@ app.use(function(err, req, res, next) {
 
 connectDb();
 
-module.exports.handler = serverless(app);
-module.exports = app;
+export default app;

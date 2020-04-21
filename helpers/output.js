@@ -4,4 +4,4 @@ const output = {
     },
 }
 
-module.exports = output;
+export default output;

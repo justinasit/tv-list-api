@@ -66,4 +66,4 @@ function validateUser(user, nameRequired=false) {
     return Joi.validate(user, schema);
 }
 
-module.exports = authController;
+export default authController;

@@ -21,5 +21,5 @@ router.get("/current", auth, async (req, res) => authController.current(req, res
 router.post("/user", async (req, res) => authController.register(req, res));
 router.post("/login", async (req, res) => authController.login(req, res));
 
-module.exports = router;
+export default router;
 

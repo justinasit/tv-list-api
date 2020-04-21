@@ -35,4 +35,4 @@ const showsController = {
     }
 }
 
-module.exports = showsController;
+export default showsController;
