@@ -1,0 +1,30 @@
+service: tv-list-api
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: production
+  region: eu-west-2
+  memorySize: 128
+  timeout: 10
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+  - serverless-plugin-include-dependencies
+package:
+  individually: true
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js 
+    includeModules: true  
+functions:
+  app:
+    handler: serverless-app.handler
+    events: 
+      - http: 
+          path: /
+          method: ANY
+          cors: true
+      - http: 
+          path: /login
+          method: ANY
+          cors: true

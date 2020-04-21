@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "@babel/runtime": "^7.9.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -20,17 +21,27 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.7",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "serverless-http": "^2.3.2",
+    "source-map-support": "^0.5.17"
   },
   "type": "module",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-source-map-support": "^2.1.1",
     "jest": "^25.2.7",
     "nodemon": "^2.0.2",
-    "supertest": "^4.0.2"
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-plugin-include-dependencies": "^4.1.0",
+    "serverless-webpack": "^5.3.1",
+    "supertest": "^4.0.2",
+    "webpack": "^4.42.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "jest": {
     "testEnvironment": "node",
