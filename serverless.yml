@@ -26,5 +26,38 @@ functions:
           cors: true
       - http: 
           path: /login
-          method: ANY
+          method: POST
+          cors: true
+      - http: 
+          path: /stored-shows
+          method: GET
+          cors:
+              origin: '*'
+              headers:
+                - x-access-token
+      - http: 
+          path: /archived-shows
+          method: GET
+          cors:
+              origin: '*'
+              headers:
+                - x-access-token
+      - http: 
+          path: /stored-shows
+          method: POST
+          cors: true
+      - http: 
+          path: /archived-shows
+          method: POST
+          cors: true
+      - http: 
+          path: /current
+          method: GET
+          cors:
+              origin: '*'
+              headers:
+                - x-access-token
+      - http: 
+          path: /user
+          method: POST
           cors: true
