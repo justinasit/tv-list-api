@@ -3,7 +3,8 @@ import User from './user';
 
 const connectDb = () => mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: process.env.DATABASE_NAME
 });
 
 const models = { User };
