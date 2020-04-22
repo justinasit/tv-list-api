@@ -25,7 +25,6 @@
     "serverless-http": "^2.3.2",
     "source-map-support": "^0.5.17"
   },
-  "type": "module",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",

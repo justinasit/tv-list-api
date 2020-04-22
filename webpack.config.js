@@ -7,6 +7,8 @@ module.exports = {
   // Generate sourcemaps for proper error messages
   devtool: 'source-map',
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
+  target: 'node', // in order to ignore built-in modules like path, fs, etc.
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   optimization: {
     // We no not want to minimize our code.
     minimize: false,
