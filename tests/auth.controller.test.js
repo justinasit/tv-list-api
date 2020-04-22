@@ -61,6 +61,17 @@ describe('Login', () => {
     expect(res.statusCode).toEqual(400);
   });
 
+  it('should fail to login with wrong password', async () => {
+    const res = await request(app)
+    .post('/login')
+    .send({
+      email: 'test.user@test.com',
+      password: 'wrong-password',
+    });
+    
+    expect(res.statusCode).toEqual(400);
+  });
+
   it('should return the logged in user', async () => {
     const res = await request(app)
       .get('/current')

@@ -5,13 +5,15 @@ import output from '../helpers/output';
 
 const authController = {
     login: async function(req, res) {
-        // validate the request body first
+        //validate the request body first
         const { error } = validateUser(req.body);
         if (error) return output.error(res, error.details[0].message);
 
         //find an existing user
         let user = await mongoose.model('User').findOne({ email: req.body.email });
-        if (!user) return output.error(res, "User does not exist.");
+        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
+            return output.error(res, "User does not exist.");
+        }
 
         const token = user.generateAuthToken();
         res.header("x-auth-token", token).send({
