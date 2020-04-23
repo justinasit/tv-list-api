@@ -7,8 +7,8 @@
     "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1"
   },
   "dependencies": {
-    "bcrypt": "^4.0.1",
     "@babel/runtime": "^7.9.2",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -23,7 +23,7 @@
     "mongoose": "^5.9.7",
     "morgan": "~1.9.1",
     "serverless-http": "^2.3.2",
-    "source-map-support": "^0.5.17"
+    "source-map-support": "^0.5.18"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -39,7 +39,7 @@
     "serverless-plugin-include-dependencies": "^4.1.0",
     "serverless-webpack": "^5.3.1",
     "supertest": "^4.0.2",
-    "webpack": "^4.42.1",
+    "webpack": "^4.43.0",
     "webpack-node-externals": "^1.7.2"
   },
   "jest": {
