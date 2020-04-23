@@ -20,6 +20,7 @@ describe('Register', () => {
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('_id');
     expect(res.headers).toHaveProperty('x-auth-token');
+    expect(res.body).toHaveProperty('archivedShows');
   });
 
   it('should fail to create a new user', async () => {
@@ -47,6 +48,7 @@ describe('Login', () => {
 
     expect(res.statusCode).toEqual(200);
     expect(res.headers).toHaveProperty('x-auth-token');
+    expect(res.body).toHaveProperty('archivedShows');
     token = res.headers['x-auth-token'];
   });
   

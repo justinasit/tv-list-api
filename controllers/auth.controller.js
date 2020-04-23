@@ -21,6 +21,7 @@ const authController = {
             name: user.name,
             email: user.email,
             shows: user.shows,
+            archivedShows: user.archivedShows,
         });
     },
     register: async function(req, res) {
@@ -37,6 +38,7 @@ const authController = {
           password: req.body.password,
           email: req.body.email,
           shows: req.body.shows,
+          archivedShows: req.body.archivedShows,
         });
         user.password = await bcrypt.hash(user.password, 10);
         await user.save();
@@ -45,7 +47,8 @@ const authController = {
         res.header("x-auth-token", token).send({
           _id: user._id,
           name: user.name,
-          email: user.email
+          email: user.email,
+          archivedShows: user.archivedShows,
         });
     },
     current: async function(req, res) {
@@ -63,6 +66,7 @@ function validateUser(user, nameRequired=false) {
     if (nameRequired) {
         schema.name = Joi.string().min(3).max(50).required();
         schema.shows = Joi.array().required();
+        schema.archivedShows = Joi.array();
     }
   
     return Joi.validate(user, schema);
