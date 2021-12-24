@@ -1,10 +1,16 @@
 import mongoose from 'mongoose';
 import Joi from 'joi';
 import output from '../helpers/output.js';
+import * as MovieAPI from '../lib/MovieApi.js';
 
 const showsController = {
     index: async function(req, res) {
         const user = await mongoose.model('User').findById(req.user._id).select('shows');
+
+        user.shows.forEach(async (show) => {
+            const showDetails = await MovieAPI.getInfoById(show.id);
+            console.log("showDetails: ", showDetails);
+        });
       
         return res.send(user.shows);
     },
