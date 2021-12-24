@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Joi from 'joi';
-import output from '../helpers/output';
+import output from '../helpers/output.js';
 
 const showsController = {
     index: async function(req, res) {

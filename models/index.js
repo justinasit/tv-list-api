@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import User from './user';
+import User from './user.js';
 
 const connectDb = () => mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
