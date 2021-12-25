@@ -14,7 +14,8 @@ const showsController = {
         return res.send(user.archivedShows);
     },
     store: async function(req, res) {
-        const { error } = Joi.validate(req.body, Joi.array().required());
+        let schema = Joi.array().required();
+        const { error } = schema.validate(req.body);
         if (error) return output.error(res, error.details[0].message);
 
         const user = await mongoose.model('User').findById(req.user._id).select('shows');
@@ -24,7 +25,8 @@ const showsController = {
         return res.send(user);
     },
     storeArchived: async function(req, res) {
-        const { error } = Joi.validate(req.body, Joi.array().required());
+        let schema = Joi.array().required();
+        const { error } = schema.validate(req.body);
         if (error) return output.error(res, error.details[0].message);
 
         const user = await mongoose.model('User').findById(req.user._id).select('archivedShows');

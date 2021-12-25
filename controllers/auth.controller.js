@@ -58,18 +58,21 @@ const authController = {
 }
 
 function validateUser(user, nameRequired=false) {
-    const schema = {
-      email: Joi.string().min(5).max(255).required().email(),
-      password: Joi.string().min(3).max(255).required()
+    const defaultKeys = {
+        email: Joi.string().min(5).max(255).required().email(),
+        password: Joi.string().min(3).max(255).required()
     };
+    let schema = Joi.object(defaultKeys);
 
     if (nameRequired) {
-        schema.name = Joi.string().min(3).max(50).required();
-        schema.shows = Joi.array().required();
-        schema.archivedShows = Joi.array();
+        schema = Joi.object({...defaultKeys, ...{
+            name: Joi.string().min(3).max(50).required(),
+            shows: Joi.array().required(),
+            archivedShows: Joi.array(),
+        }});
     }
   
-    return Joi.validate(user, schema);
+    return schema.validate(user);
 }
 
 export default authController;
