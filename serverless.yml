@@ -7,15 +7,11 @@ provider:
   memorySize: 128
   timeout: 10
 plugins:
-  - serverless-webpack
+  - serverless-bundle
   - serverless-dotenv-plugin
   - serverless-plugin-include-dependencies
 package:
   individually: true
-custom:
-  webpack:
-    webpackConfig: ./webpack.config.js 
-    includeModules: true  
 functions:
   app:
     handler: serverless-app.handler

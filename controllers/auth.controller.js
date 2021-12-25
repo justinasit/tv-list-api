@@ -28,11 +28,12 @@ const authController = {
         // validate the request body first
         const { error } = validateUser(req.body, true);
         if (error) return output.error(res, error.details[0].message);
-      
+
         //find an existing user
         let user = await mongoose.model('User').findOne({ email: req.body.email });
         if (user) return output.error(res, "User already registered.");
-      
+
+        /*eslint new-cap: ["error", { "newIsCap": false }]*/
         user = new mongoose.model('User')({
           name: req.body.name,
           password: req.body.password,
@@ -42,7 +43,7 @@ const authController = {
         });
         user.password = await bcrypt.hash(user.password, 10);
         await user.save();
-      
+
         const token = user.generateAuthToken();
         res.header("x-auth-token", token).send({
           _id: user._id,
@@ -55,7 +56,7 @@ const authController = {
         const user = await mongoose.model('User').findById(req.user._id).select("-password");
         res.send(user);
     }
-}
+};
 
 function validateUser(user, nameRequired=false) {
     const defaultKeys = {
@@ -71,7 +72,7 @@ function validateUser(user, nameRequired=false) {
             archivedShows: Joi.array(),
         }});
     }
-  
+
     return schema.validate(user);
 }
 

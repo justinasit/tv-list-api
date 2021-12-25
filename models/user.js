@@ -36,10 +36,10 @@ const UserSchema = new mongoose.Schema({
 });
 
 
-//custom method to generate authToken 
-UserSchema.methods.generateAuthToken = function() { 
+//custom method to generate authToken
+UserSchema.methods.generateAuthToken = function() {
   return jwt.sign({ _id: this._id }, process.env.JWT_PRIVATE_KEY);
-}
+};
 
 const User = mongoose.model('User', UserSchema);
 

@@ -1,4 +1,4 @@
-import models, { connectDb } from './models/index.js';
+import { connectDb } from './models/index.js';
 import 'dotenv/config.js';
 import cors from 'cors';
 import createError from 'http-errors';
