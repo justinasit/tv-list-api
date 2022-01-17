@@ -8,13 +8,13 @@
 
 # Prerequisites:
 
-- Node & NPM
+- Node & Yarn
 
 # Set up TV-List:
 
 1. Clone tv-list-api repository.
-2. Run `npm install` to install all dependencies.
+2. Run `yarn` to install all dependencies.
 4. Copy `.env.example` file and name it `.env`.
 5. Fill in the JWT and database details in the `.env` file.
-6. Use `npm start` to run the app.
+6. Use `yarn start` to run the app.
 7. Application can be consumed by an API client (Postman, Insomnia etc.) or by hooking up the front-end TV-List app.
