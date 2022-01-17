@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
-import output from '../helpers/output.js';
+import output from '../helpers/output';
 
 const authController = {
     login: async function(req, res) {

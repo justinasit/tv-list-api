@@ -1,7 +1,7 @@
-import authController from '../controllers/auth.controller.js';
-import showsController from '../controllers/shows.controller.js';
+import authController from '../controllers/auth.controller';
+import showsController from '../controllers/shows.controller';
 import express from  'express';
-import auth from '../middleware/auth.js';
+import auth from '../middleware/auth';
 
 var router = express.Router();
 

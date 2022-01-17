@@ -1,5 +1,5 @@
-import app from './app.js';
+import app from './app';
 
 app.listen(3000);
 
-export default app;
+module.exports = app;
