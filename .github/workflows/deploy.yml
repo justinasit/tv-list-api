@@ -2,29 +2,29 @@ name: Serverless Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy-prod:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-    - name: Install Serverless Framework
-      run: npm install -g serverless
-    - name: Install NPM dependencies
-      run: npm install
-    - name: Serverless AWS authentication
-      run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
-    - name: Create env file
-      run: | # cp .env values
-        cat > .env << EOF
-        ${{ secrets.ENV }}
-        EOF
-    - name: Deploy Lambda functions
-      run: sls deploy -s prod
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
+      - name: Install Serverless Framework
+        run: npm install -g serverless
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Serverless AWS authentication
+        run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
+      - name: Create env file
+        run: | # cp .env values
+          cat > .env << EOF
+          ${{ secrets.ENV }}
+          EOF
+      - name: Deploy Lambda functions
+        run: sls deploy -s prod

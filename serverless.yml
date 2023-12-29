@@ -1,7 +1,7 @@
 service: tv-list-api
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs20.x
   stage: production
   region: eu-west-2
   memorySize: 128
@@ -14,50 +14,50 @@ package:
   individually: true
 custom:
   webpack:
-    webpackConfig: ./webpack.config.js 
-    includeModules: true  
+    webpackConfig: ./webpack.config.js
+    includeModules: true
 functions:
   app:
     handler: serverless-app.handler
-    events: 
-      - http: 
+    events:
+      - http:
           path: /
           method: ANY
           cors: true
-      - http: 
+      - http:
           path: /login
           method: POST
           cors: true
-      - http: 
+      - http:
           path: /stored-shows
           method: GET
           cors:
-              origin: '*'
-              headers:
-                - x-access-token
-      - http: 
+            origin: "*"
+            headers:
+              - x-access-token
+      - http:
           path: /archived-shows
           method: GET
           cors:
-              origin: '*'
-              headers:
-                - x-access-token
-      - http: 
+            origin: "*"
+            headers:
+              - x-access-token
+      - http:
           path: /stored-shows
           method: POST
           cors: true
-      - http: 
+      - http:
           path: /archived-shows
           method: POST
           cors: true
-      - http: 
+      - http:
           path: /current
           method: GET
           cors:
-              origin: '*'
-              headers:
-                - x-access-token
-      - http: 
+            origin: "*"
+            headers:
+              - x-access-token
+      - http:
           path: /user
           method: POST
           cors: true
